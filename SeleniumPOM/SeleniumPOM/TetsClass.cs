@@ -7,7 +7,7 @@ namespace SeleniumPOM;
 public class TestClass
 {
     private LoginPage _loginPage;
-    private HomePage _homePage;
+    private HomePage HomePage;
 
     [SetUp]
 
@@ -15,7 +15,7 @@ public class TestClass
     {
         WebDriver.Initialize();
         _loginPage = new LoginPage();
-        _homePage = new HomePage();
+        HomePage = new HomePage();
 
     }
 
@@ -32,13 +32,21 @@ public class TestClass
     {
 
         Login("execute", "automation");
+        HomePage.Initial.SendKeys("DS");
+        HomePage.TitleName("Mr");
+        HomePage.FirstName.SendKeys("Dusan");
+        HomePage.MidleName.SendKeys("Sal");
+        HomePage.Female.Click();
+        HomePage.Hindi.Click();
+        HomePage.SaveButton.Click();
+
     }
 
     [Test]
     public void TC02_OpenPopUp_ShouldDisplayed()
     {
         Login("execute", "automation");
-
+        HomePage.HtmlPopup.Click();
     
     }
 
@@ -47,7 +55,7 @@ public class TestClass
     public void TC03_OpenAlert_ShouldDisplayed()
     {
         Login("execute", "automation");
-
+        HomePage.Alert();
      
     }
 
