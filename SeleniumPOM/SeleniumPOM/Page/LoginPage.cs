@@ -8,11 +8,15 @@ namespace SeleniumPOM.Page
 
         private IWebDriver _driver = WebDriver.Instance;
 
-        // ovde ubaciti selectore
+        public IWebElement UserName => _driver.FindElement(By.Name("UserName"));
+        public IWebElement Password => _driver.FindElement(By.Name("Password"));
+        public IWebElement Login => _driver.FindElement(By.Name("Login"));
 
         public void LoginOnPage(string name, string password)
         {
-           //methoda za Lopgin pozvati slectore ovde
+            UserName.SendKeys(name);
+            Password.SendKeys(password);
+            Login.Submit();
         }
     }
 }
